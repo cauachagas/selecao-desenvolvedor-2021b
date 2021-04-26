@@ -50,4 +50,4 @@ class TrackSimplifiedSerializer(serializers.ModelSerializer):
 class PlaylistSerializer(serializers.ModelSerializer):
     class Meta:
         model = Playlist
-        fields = ('name')
+        fields = ('name',)
