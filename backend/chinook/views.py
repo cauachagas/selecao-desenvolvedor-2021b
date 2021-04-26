@@ -12,6 +12,7 @@ class AlbumListAPIView(ListAPIView):
 
 class GenreListAPIView(ListAPIView):
     queryset = Genre.objects.all()
+    # queryset = Genre.objects.prefetch_related('tracks').all()
     serializer_class = GenreSerializer
 
 
