@@ -31,6 +31,7 @@ class TrackSerializer(serializers.ModelSerializer):
 
 class TrackSimplifiedSerializer(serializers.ModelSerializer):
     album_name = serializers.CharField(source='album.title', read_only=True)
+    genre_name = serializers.CharField(source='genre.name', read_only=True)
     duration = serializers.SerializerMethodField()
 
     def get_duration(self, obj):
@@ -43,7 +44,7 @@ class TrackSimplifiedSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Track
-        fields = ('id', 'name', 'composer', 'album_name', 'duration')
+        fields = ('id', 'name', 'composer', 'album_name' ,'genre_name', 'duration', 'bytes', 'unitprice', 'media_type')
 
 
 class PlaylistSerializer(serializers.ModelSerializer):

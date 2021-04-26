@@ -22,7 +22,8 @@ class PlaylistListAPIView(ListAPIView):
 
 
 class TrackListAPIView(ListAPIView):
-    queryset = Track.objects.all().only('id', 'name', 'composer')  # Selected only the fields that will be used.
+    # queryset = Track.objects.all().only('id', 'name', 'composer')  # Selected only the fields that will be used.
+    queryset = Track.objects.select_related('album', 'genre').all()
     serializer_class = TrackSimplifiedSerializer
 
 
