@@ -163,4 +163,6 @@ Thumbs.db
 
 node_modules/
 .vscode
-backend/.env
+.git
+docker-compose.yml
+.gitignore
