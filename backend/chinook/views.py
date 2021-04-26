@@ -6,7 +6,7 @@ from core.utils import sql_fetch_all
 
 
 class AlbumListAPIView(ListAPIView):
-    queryset = Album.objects.all()
+    queryset = Album.objects.select_related('artist').all()
     serializer_class = AlbumSerializer
 
 
