@@ -1,22 +1,32 @@
 
-function NotaField({ maxNota, value, onChange }) {
-    function onChangeValue (event) {
-        const nota = event.target.value
+function NotaField({maxNota, value, onChange}) {
+  
+  const corInativa='gray';
+  const corAtivado='red';
+  const estrelinhas = Array.from({length: maxNota}, () => '🟊')
 
-        if (nota <= maxNota) {
-            onChange(nota)
-        }
-    }
-
-    return (
-      <div>
-        <input
-            type={'number'}
-            value={value}
-            onChange={onChangeValue}
-        />
-      </div>
-    );
+  const onChangeValue = (value) => {
+    onChange(value + 1);
   }
+
+  return (
+    <div>
+      {estrelinhas.map((s, index) => {
+        let cor = corInativa;
+        if (index < value) {
+          cor=corAtivado;
+        }
+        return (
+          <span className={"star"}
+            style={{cursor: 'pointer', color: cor}}
+            key={index}
+            onClick={()=>onChangeValue(index)}>{s}
+          </span>
+        )
+      })}
+      {value}
+    </div>
+  )
+}
   
 export default NotaField;
