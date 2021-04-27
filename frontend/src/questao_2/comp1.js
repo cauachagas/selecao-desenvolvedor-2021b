@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext } from "react";
+import Contexto from "./contexto";
 
 function Comp1() {
-    const [texto, setTexto] = useState('Texto')
+    const { texto, setTexto } = useContext(Contexto);
     return (
       <div>
         {texto}
