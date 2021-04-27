@@ -28,9 +28,8 @@ class TrackListAPIView(ListAPIView):
 
 
 class ReportDataAPIView(GenericAPIView):
-    def get(self, request, *args, **kwargs):
-        
-        dado = sql_fetch_all(
+    def get_queryset(self): 
+        return sql_fetch_all(
             """
                 SELECT *,
                     customers.[FirstName] || ' ' || customers.[LastName] as FullName
@@ -39,5 +38,6 @@ class ReportDataAPIView(GenericAPIView):
                 ORDER BY CustomerId
             """
         )
-
-        return Response(dado)
+    
+    def get(self, request, *args, **kwargs):
+        return Response(self.get_queryset())
